@@ -1,0 +1,13 @@
+// lib/novice-www-debug.js
+var path = require('path');
+
+module.exports = function () {
+		var appRootPath = path.dirname(require.main.filename);
+		var lnl = appRootPath;
+		if((appRootPath.length - 4) === appRootPath.indexOf(path.sep + 'bin'))
+			appRootPath = appRootPath.slice(0, -4);
+
+		var debug = require('debug')(path.basename(appRootPath)+':server');
+
+		return debug;
+};

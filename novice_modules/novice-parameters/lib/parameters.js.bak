@@ -1,0 +1,21 @@
+// lib/parameters.js
+var path = require('path');
+
+module.exports = {
+	
+	appRoot: "",
+	projectRoot: "",
+	
+	getProjectRoot: function () {
+		var projectRootPath = path.dirname(require.main.filename);
+		if((projectRootPath.length - 4) === projectRootPath.indexOf(path.sep + 'bin') || (projectRootPath.length - 4) === projectRootPath.indexOf(path.sep + 'app'))
+			projectRootPath = projectRootPath.slice(0, -4);
+		
+		return projectRootPath;
+	},
+
+	getAppRoot: function () {
+		var appRootPath = path.dirname(require.main.filename);		
+		return appRootPath;
+	}
+};
